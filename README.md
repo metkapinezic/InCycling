@@ -5,11 +5,11 @@ Python tool that processes each file and produces a corresponding output file, w
 Reads CSV files in the `data_imput` folder containing chemical names, calls the PubChem public API to resolve each name to a CAS Registry Number, and writes enriched output CSVs with the same filename to `data_output`.
 
 Created files and what each one owns:
-- cas_resolver/pubchem.py — knows how to talk to PubChem. Async HTTP, rate limiting, retries, CAS extraction from synonyms.
-- cas_resolver/processor.py — knows how to read and write CSVs and orchestrate the pipeline. Calls pubchem.py. 
-- cas_resolver/__main__.py — the front door. Parses CLI arguments, configures logging, calls processor.py. 
-- tests/test_resolver.py — verifies all the logic works without touching the network.
-- tests/test_integration.py - tests the full pipeline end-to-end with a hardcoded map of known-correct CAS numbers
+- cas_resolver/pubchem.py -- knows how to talk to PubChem. Async HTTP, rate limiting, retries, CAS extraction from synonyms.
+- cas_resolver/processor.py -- knows how to read and write CSVs and orchestrate the pipeline. Calls pubchem.py. 
+- cas_resolver/__main__.py -- the front door. Parses CLI arguments, configures logging, calls processor.py. 
+- tests/test_resolver.py -- verifies all the logic works without touching the network.
+- tests/test_integration.py -- tests the full pipeline end-to-end with a hardcoded map of known-correct CAS numbers
 
 
 Input format:
