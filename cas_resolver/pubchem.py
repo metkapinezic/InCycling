@@ -61,7 +61,7 @@ async def resolve_cas(  # defines a function that can be paused and resumed. You
                     await asyncio.sleep(wait)
                     continue
 
-                response.raise_for_status() # for any other HTTP error (500, 503, etc), we log it and return None. These errors are less likely to be transient, so we don't retry.
+                response.raise_for_status() # for any other HTTP error, we log it and return None. These errors are less likely to be transient, so we don't retry.
 
                 data = response.json()
                 synonyms: list[str] = (
