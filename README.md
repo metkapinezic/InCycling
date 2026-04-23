@@ -33,17 +33,17 @@ pip install -e ".[dev]"
 
 Process all CSV files in a directory:
 ```bash
-python3 -m cas_resolver --input-dir data_imput/ --output-dir data_output/
+python3 -m cas_resolver --input-dir data_input/ --output-dir data_output/
 ```
 
 Process specific files:
 ```bash
-python3 -m cas_resolver data_imput/batch_1.csv data_imput/batch_2.csv --output-dir data_output/
+python3 -m cas_resolver data_input/batch_1.csv data_imput/batch_2.csv --output-dir data_output/
 ```
 
 Add `--verbose` for detailed logs including every HTTP request:
 ```bash
-python3 -m cas_resolver --input-dir data_imput/ --output-dir data_output/ --verbose
+python3 -m cas_resolver --input-dir data_input/ --output-dir data_output/ --verbose
 ```
 
 ## How to run the tests

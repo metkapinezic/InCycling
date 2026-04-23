@@ -10,14 +10,21 @@ from pathlib import Path
 from cas_resolver.processor import process_files
 
 
-def _configure_logging(verbose: bool) -> None: # sets up the logging system for the whole program. Without this, all those logger.info(...) calls in your other files would silently do nothing. verbose mode switches from INFO to DEBUG, which shows the raw HTTP connection details — useful when something is broken.
+def _configure_logging(verbose: bool) -> None:
     level = logging.DEBUG if verbose else logging.INFO
-    logging.basicConfig(
-        level=level,
-        format="%(asctime)s  %(levelname)-8s  %(message)s",
+
+    formatter = logging.Formatter(
+        fmt="%(asctime)s  %(levelname)-8s  %(message)s",
         datefmt="%H:%M:%S",
     )
 
+    console_handler = logging.StreamHandler()
+    console_handler.setFormatter(formatter)
+
+    file_handler = logging.FileHandler("cas_resolver.log")
+    file_handler.setFormatter(formatter)
+
+    logging.basicConfig(level=level, handlers=[console_handler, file_handler])
 
 def _parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(

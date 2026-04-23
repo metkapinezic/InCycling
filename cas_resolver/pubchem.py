@@ -55,7 +55,7 @@ async def resolve_cas(  # defines a function that can be paused and resumed. You
                     logger.warning("PubChem: no compound found for %r", name)
                     return None
 
-                if response.status_code == 429: # rate limited — this is temporary, worth retrying after a wait
+                if response.status_code in (429, 503): # rate limited — this is temporary, worth retrying after a wait
                     wait = _RETRY_BACKOFF ** attempt
                     logger.warning("Rate limit hit for %r — retrying in %.1fs", name, wait)
                     await asyncio.sleep(wait)
