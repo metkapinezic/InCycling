@@ -2,7 +2,7 @@
 Python tool that processes each file and produces a corresponding output file, with the same filename in a different directory.
 
 ## What it does
-Reads CSV files in the `data_imput` folder containing chemical names, calls the PubChem public API to resolve each name to a CAS Registry Number, and writes enriched output CSVs with the same filename to `data_output`.
+Reads CSV files in the `data_input` folder containing chemical names, calls the PubChem public API to resolve each name to a CAS Registry Number, and writes enriched output CSVs with the same filename to `data_output`.
 
 Created files and what each one owns:
 - cas_resolver/pubchem.py -- knows how to talk to PubChem. Async HTTP, rate limiting, retries, CAS extraction from synonyms.
@@ -33,17 +33,17 @@ pip install -e ".[dev]"
 
 Process all CSV files in a directory:
 ```bash
-python3 -m cas_resolver --input-dir data_imput/ --output-dir data_output/
+python3 -m cas_resolver --input-dir data_input/ --output-dir data_output/
 ```
 
 Process specific files:
 ```bash
-python3 -m cas_resolver data_imput/batch_1.csv data_imput/batch_2.csv --output-dir data_output/
+python3 -m cas_resolver data_input/batch_1.csv data_imput/batch_2.csv --output-dir data_output/
 ```
 
 Add `--verbose` for detailed logs including every HTTP request:
 ```bash
-python3 -m cas_resolver --input-dir data_imput/ --output-dir data_output/ --verbose
+python3 -m cas_resolver --input-dir data_input/ --output-dir data_output/ --verbose
 ```
 
 ## How to run the tests
