@@ -2,7 +2,7 @@
 Python tool that processes each file and produces a corresponding output file, with the same filename in a different directory.
 
 ## What it does
-Reads CSV files in the `data_imput` folder containing chemical names, calls the PubChem public API to resolve each name to a CAS Registry Number, and writes enriched output CSVs with the same filename to `data_output`.
+Reads CSV files in the `data_input` folder containing chemical names, calls the PubChem public API to resolve each name to a CAS Registry Number, and writes enriched output CSVs with the same filename to `data_output`.
 
 Created files and what each one owns:
 - cas_resolver/pubchem.py -- knows how to talk to PubChem. Async HTTP, rate limiting, retries, CAS extraction from synonyms.
